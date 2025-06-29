@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .edit-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #1877f2;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        input[readonly] {
+            background-color: #f9f9f9;
+        }
+        button {
+            margin-top: 15px;
+            width: 100%;
+            background-color: #1877f2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #145db2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="edit-container">
+    <h2>Edit Your Post</h2>
+    <form action="/<%=editpost.id%>?_method=PATCH" method="POST">
+        <label>Username:</label>
+        <input type="text" name="user" value="<%=editpost.user%>" readonly>
+
+        <label>Edit Post:</label>
+        <textarea name="post" rows="5" required><%=editpost.post%></textarea>
+
+        <button type="submit">Update Post</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -91,7 +91,7 @@
             <h3>@<%=o.user%></h3>
             <p><%=o.post%></p>
              <div class="actions">
-                
+                 <a href="/post/<%=o.id%>/edit"> Edit Post</a>
                 <form method="POST" action="/post/<%=o.id%>?_method=DELETE">
                     <button>Delete</button>
                 </form>

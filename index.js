@@ -1,6 +1,6 @@
 const express= require("express");
 const app=new express();
-const port=3000;
+const port = process.env.PORT || 3000;
 const path= require("path");
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
@@ -47,11 +47,28 @@ app.delete("/post/:id",(req,res)=>{
     allposts=allposts.filter(p=>p!=delpost);
     res.redirect("/");
 })
+app.get("/post/:id/edit",(req,res)=>{
+    let {id}=req.params;
+    let editpost=allposts.find((p)=>p.id===id);
+    res.render("edit.ejs",{editpost});
+})
 
-
+app.patch("/:id",(req,res)=>{
+    let newpost=req.body;
+    let {id}=req.params;
+    let target=allposts.find((p)=>p.id===id);
+    target.post=newpost.post;
+    res.redirect("/");
+})
 
 
 
 app.listen(port,()=>{
     console.log("Listenning to Port 3000")
 })
+
+
+
+
+
+

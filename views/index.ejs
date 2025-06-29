@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook Clone - All Posts</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        header {
+            background-color: #1877f2;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            height: 32px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .new-post {
+            margin-bottom: 20px;
+        }
+
+        .new-post a {
+            background-color: #42b72a;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .post {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .post h3 {
+            color: #1877f2;
+            margin: 0 0 10px;
+        }
+
+        .post .actions a, .post .actions form button {
+            margin-right: 10px;
+            background: none;
+            border: none;
+            color: #1877f2;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .post .actions form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="FB Logo">
+        <h1>Facebook Clone</h1>
+    </header>
+
+    <div class="container">
+        <div class="new-post">
+            <a href="/newpost">+ Create New Post</a>
+        </div>
+
+        <!-- Example post -->
+         <% for(let o of allposts) { %>
+         <div class="post">
+            <h3>@<%=o.user%></h3>
+            <p><%=o.post%></p>
+             <div class="actions">
+                
+                <form method="POST" action="/post/<%=o.id%>?_method=DELETE">
+                    <button>Delete</button>
+                </form>
+            </div>
+        </div>
+<% } %>
+
+
+        
+        <!-- More posts go here -->
+    </div>
+
+</body>
+</html>
